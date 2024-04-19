@@ -3,17 +3,17 @@
 {% block content %}
     <h2>Sparta Market</h2>
     <button>로그인</button>
-    <button>내마켓</button>
+    <button>내 마켓</button>
 
     <ul>
         {% for product in products %}
             <li>
-                <a href="{% url 'products:product_detail' product.pk %}">
+                <a href="{% url 'products:productDetail' product.pk %}">
                 <div>{{ product.title }}</div>
                     </a>
                 <br>
             </li>
         {% endfor %}
     </ul>
-    <button>+팝니다</button>
+    <a href="{% url 'products:create' %}"><button>+ 팝니다</button></a>
 {% endblock content %}

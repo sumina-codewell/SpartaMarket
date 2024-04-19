@@ -2,15 +2,16 @@
 
 {% block content %}
 
-<h1>{{ product.title }}</h1>
+<h2>{{ product.title }}</h2>
 <p>{{ product.content }}</p>
+<p>가격 {{ product.price }}원</p>
 <p> 작성 : {{ product.created_at }}</p>
 <p> 수정 : {{ product.updated_at }}</p>
 
-<a href="{% url 'products:product' %}"><button>목록</button></a>
-<form action="{% url 'delete' product.pk %}" method="POST">
+<a href="{% url 'products:products' %}"><button>목록</button></a>
+<form action="{% url 'products:delete' product.pk %}" method="POST">
     {% csrf_token %}
     <input type="submit" value="삭제">
 </form>
-<a href="{% url 'update' article.pk %}"><button>수정</button></a>
+<button>수정</button>
 {% endblock content %}
