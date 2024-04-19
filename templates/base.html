@@ -7,8 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
+    <div class="navbar">
+        {% if request.user.is_authenticated %}
+            <form action="{% url 'accounts:logout' %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="로그아웃">
+                <button>내 마켓</button>
+            </form>
+        {% else %}
+            <a href="{% url 'accounts:login'%}">로그인</a>
+        {% endif %}
+    </div>
+
+    <div class="container">
     {% block content %}
     {% endblock content %}
+    </div>
 </body>
 </html>
